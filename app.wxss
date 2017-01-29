@@ -1,7 +1,8 @@
 @import "pages/common/weui.wxss";
 
-.wrapper {
-  padding: 0 30 rpx;
+text {
+  font-size: 32rpx;
+  line-height: 1.6;
 }
 
 .center {
