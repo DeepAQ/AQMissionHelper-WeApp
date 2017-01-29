@@ -1,1 +1,1 @@
-<map show-location="true" markers="{{markers}}" include-points="{{markers}}"/>
+<map show-location="true" markers="{{markers}}" include-points="{{markers}}" bindmarkertap="onMarkerTap"/>

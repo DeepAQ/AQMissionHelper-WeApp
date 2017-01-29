@@ -10,12 +10,6 @@ Page({
       }
     })
 
-    // debug
-    options = {
-      q: '南京',
-      qt: 'ingressmm'
-    }
-
     const fail = () => {
       wx.showModal({
         title: '加载失败',

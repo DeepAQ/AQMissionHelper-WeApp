@@ -7,7 +7,7 @@ Page({
 
     onSearch: function (e) {
         wx.navigateTo({
-            url: '../search/search?q=e.detail.value&qt=' + searchType
+            url: '../search/search?q=' + e.detail.value + '&qt=' + searchType
         })
     }
 })

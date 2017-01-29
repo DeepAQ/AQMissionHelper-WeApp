@@ -81,5 +81,66 @@ module.exports = {
                 fail: fail
             })
         }
+    },
+
+    mosaik: {
+        search: function (key, success, fail) {
+            wx.request({
+                url: 'https://aqmh.azurewebsites.net/get_mission_mosaik.php?find=' + encodeURIComponent(key),
+                success: res => {
+                    if (res.statusCode == 200) {
+                        success(this.parseList(res.data))
+                    } else {
+                        fail()
+                    }
+                },
+                fail: fail
+            })
+        },
+
+        parseList: json => {
+            let list = []
+            try {
+                for (let i in json) {
+                    const json2 = JSON.parse(json[i])
+                    for (let j in json2[4][0]) {
+                        const mission = json2[4][0][j]
+                        let portals = []
+                        for (let k in mission.data.waypoints) {
+                            const po = mission.data.waypoints[k]
+                            if (po.data[0] == 0) {
+                                portals.push({
+                                    hidden: true
+                                })
+                            } else {
+                                portals.push({
+                                    hidden: false,
+                                    task: po.data[0],
+                                    name: po.data[1],
+                                    lat: po.latLng[0],
+                                    lng: po.latLng[1]
+                                })
+                            }
+                        }
+                        list.push({
+                            type: 'mosaik',
+                            name: mission.data.dap,
+                            seq: 9,
+                            lat: mission.latLng[0],
+                            lng: mission.latLng[1],
+                            icon: mission.data.image,
+                            waypoints: portals
+                        })
+                    }
+                }
+                return list
+            } catch (e) {
+                return false
+            }
+        },
+
+        getPortals: (mission, success, fail) => {
+            success(mission.waypoints)
+        }
     }
 }

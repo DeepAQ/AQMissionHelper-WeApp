@@ -13,13 +13,16 @@ Page({
       markers.push({
         latitude: gcjPos.lat,
         longitude: gcjPos.lng,
-        title: po.name,
-        iconPath: 'res/location.png'
+        title: po.name
       })
     }
 
     this.setData({
       markers: markers
     })
+  },
+
+  onMarkerTap: e => {
+    console.log(e)
   }
 })
