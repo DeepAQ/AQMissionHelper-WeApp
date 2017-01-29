@@ -1,10 +1,14 @@
-<!--index.wxml-->
-<view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+<view class="header">
+  <view class="center">
+    <image src="res/icon.png" />
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+  <radio-group bindchange="onRadioChange">
+    <label>
+      <radio value="ingressmm" checked="true" />IngressMM
+    </label>
+    <label>
+      <radio value="mosaik" />IngressMosaik
+    </label>
+  </radio-group>
+  <input placeholder="搜索任务" bindconfirm="onSearch" />
 </view>
