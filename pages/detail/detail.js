@@ -49,5 +49,11 @@ Page({
         }
       })
     })
+  },
+
+  onMapTap: () => {
+    wx.navigateTo({
+      url: '../map/map'
+    })
   }
 })

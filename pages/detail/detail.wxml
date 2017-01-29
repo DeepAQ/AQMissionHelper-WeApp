@@ -5,7 +5,7 @@
 </view>
 
 <view class="actions" wx:if="{{portals}}">
-  <button type="primary">在地图中查看</button>
+  <button type="primary" bindtap="onMapTap">在地图中查看</button>
 </view>
 
 <view class="portal" wx:if="{{portals}}" wx:for="{{portals}}">
