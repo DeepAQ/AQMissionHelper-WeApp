@@ -27,7 +27,8 @@ module.exports = {
                 }
                 return false
             }
-            for (let item of json.mission) {
+            for (let key in json.mission) {
+                const item = json.mission[key]
                 list.push({
                     type: 'ingressmm',
                     id: item.id,

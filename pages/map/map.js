@@ -7,7 +7,8 @@ Page({
     const detailData = pages[pages.length - 2].data
 
     let markers = []
-    for (let po of detailData.portals) {
+    for (let key in detailData.portals) {
+      const po = detailData.portals[key]
       const gcjPos = wgstogcj.transform(po.lat, po.lng)
       markers.push({
         latitude: gcjPos.lat,
