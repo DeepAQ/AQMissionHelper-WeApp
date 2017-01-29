@@ -1,0 +1,14 @@
+<import src="../common/mission_item.wxml"/>
+
+<view class="mission">
+  <template is="missionItem" data="{{...mission}}"/>
+</view>
+
+<view class="actions" wx:if="{{portals}}">
+  <button type="primary">在地图中查看</button>
+</view>
+
+<view class="portal" wx:if="{{portals}}" wx:for="{{portals}}">
+  <text>{{index + 1}}. {{item.name}}</text>
+  <text>{{task_list[item.task]}}</text>
+</view>

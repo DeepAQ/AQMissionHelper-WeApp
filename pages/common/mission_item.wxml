@@ -1,0 +1,10 @@
+<template name="missionItem">
+  <image src="{{icon}}" />
+  <view class="mission-info">
+    <text>{{name}}</text>
+    <text wx:if="{{seq == 1}}">Sequential</text>
+    <text wx:elif="{{seq == 2}}">Any Order</text>
+    <text wx:elif="{{seq == 9}}">Unknown</text>
+    <text wx:else>Hidden</text>
+  </view>
+</template>

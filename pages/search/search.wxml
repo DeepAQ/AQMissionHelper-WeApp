@@ -1,16 +1,5 @@
-<view class="mission" hover="true" hover-class="mission-hover" wx:for="{{list}}">
-  <image src="{{item.icon}}" />
-  <view class="mission-info">
-    <text>{{item.name}}</text>
-    <text wx:if="{{item.seq == 1}}">Sequential</text>
-    <text wx:elif="{{item.seq == 2}}">Any Order</text>
-    <text wx:elif="{{item.seq == 9}}">Unknown</text>
-    <text wx:else>Hidden</text>
-  </view>
-</view>
-<view class="failed center" wx:if="{{failed}}">
-  <icon type="warn" size="100" />
-  <view>
-    <text>加载失败</text>
-  </view>
+<import src="../common/mission_item.wxml"/>
+
+<view class="mission" hover="true" hover-class="mission-hover" wx:for="{{list}}" data-key="{{index}}" bindtap="onMissionTap">
+  <template is="missionItem" data="{{...item}}"/>
 </view>

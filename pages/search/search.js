@@ -1,4 +1,4 @@
-const data = require('data.js')
+const data = require('../common/data.js')
 
 Page({
   onLoad: function (options) {
@@ -25,32 +25,29 @@ Page({
         }
       })
     }
-    const complete = () => {
-      wx.setNavigationBarTitle({
-        title: '搜索结果',
-        success: () => {
-          wx.hideNavigationBarLoading()
-        }
-      })
-    }
 
     if (!data[options.qt]) {
       fail()
+    } else {
+      data[options.qt].search(options.q, result => {
+        this.setData({
+          list: result,
+          q: options.q,
+          qt: options.qt
+        })
+        wx.setNavigationBarTitle({
+          title: '搜索结果',
+          success: () => {
+            wx.hideNavigationBarLoading()
+          }
+        })
+      }, fail)
     }
+  },
 
-    wx.request({
-      url: 'https://aqmh.azurewebsites.net/' + data[options.qt].search(options.q),
-      success: res => {
-        if (res.statusCode == 200) {
-          this.setData({
-            list: data[options.qt].parseList(res.data)
-          })
-        } else {
-          fail()
-        }
-      },
-      fail: fail,
-      complete: complete
+  onMissionTap: e => {
+    wx.navigateTo({
+      url: '../detail/detail?key=' + e.currentTarget.dataset.key
     })
   }
 })
