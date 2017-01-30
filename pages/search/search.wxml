@@ -1,5 +1,9 @@
 <import src="../common/mission_item.wxml"/>
 
+<view class="actions" wx:if="{{list.length > 0 && list.length % 6 == 0}}">
+  <button bindtap="onPreviewTap">预览拼图效果</button>
+</view>
+
 <view class="mission" hover="true" hover-class="mission-hover" wx:for="{{list}}" data-key="{{index}}" bindtap="onMissionTap">
   <template is="missionItem" data="{{...item}}"/>
 </view>

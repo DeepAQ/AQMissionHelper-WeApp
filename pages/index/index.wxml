@@ -10,5 +10,5 @@
       <radio value="mosaik" />IngressMosaik
     </label>
   </radio-group>
-  <input placeholder="搜索任务" bindconfirm="onSearch" />
+  <input auto-focus placeholder="搜索任务" bindconfirm="onSearch" />
 </view>

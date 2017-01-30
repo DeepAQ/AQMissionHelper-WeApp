@@ -43,5 +43,11 @@ Page({
     wx.navigateTo({
       url: '../detail/detail?key=' + e.currentTarget.dataset.key
     })
+  },
+
+  onPreviewTap: () => {
+    wx.navigateTo({
+      url: '../preview/preview'
+    })
   }
 })
