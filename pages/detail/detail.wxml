@@ -9,6 +9,11 @@
 </view>
 
 <view class="portal" wx:if="{{portals}}" wx:for="{{portals}}">
-  <text>{{index + 1}}. {{item.name}}</text>
-  <text>{{task_list[item.task]}}</text>
+  <view>
+    <text>{{index + 1}}. {{item.name}}</text>
+    <text>{{task_list[item.task]}}</text>
+  </view>
+  <view>
+    <button size="mini" data-lat="{{item.lat}}" data-lng="{{item.lng}}" data-name="{{item.name}}" data-description="{{task_list[item.task]}}" bindtap="onNavigateTap">导航</button>
+  </view>
 </view>

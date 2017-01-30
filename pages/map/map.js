@@ -20,9 +20,5 @@ Page({
     this.setData({
       markers: markers
     })
-  },
-
-  onMarkerTap: e => {
-    console.log(e)
   }
 })

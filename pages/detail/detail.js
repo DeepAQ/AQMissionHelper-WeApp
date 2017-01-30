@@ -1,4 +1,5 @@
 const data = require('../common/data.js')
+const wgstogcj = require('../common/wgstogcj.js')
 
 Page({
   data: {
@@ -54,6 +55,17 @@ Page({
   onMapTap: () => {
     wx.navigateTo({
       url: '../map/map'
+    })
+  },
+
+  onNavigateTap: e => {
+    const gcjPos = wgstogcj.transform(e.currentTarget.dataset.lat, e.currentTarget.dataset.lng)
+    console.log(gcjPos)
+    wx.openLocation({
+      latitude: gcjPos.lat,
+      longitude: gcjPos.lng,
+      name: e.currentTarget.dataset.name,
+      address: e.currentTarget.dataset.description
     })
   }
 })

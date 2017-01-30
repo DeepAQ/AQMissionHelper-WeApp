@@ -6,14 +6,19 @@
 
 .portal {
   display: flex;
-  flex-direction: column;
   padding: 10rpx 30rpx;
 }
 
-.portal>text {
+.portal text {
   line-height: 1.2;
 }
 
-.portal>text:first-child {
+.portal text:first-child {
   font-weight: bold;
+}
+
+.portal>view:first-child {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
