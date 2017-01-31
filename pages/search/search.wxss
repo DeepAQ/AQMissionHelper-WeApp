@@ -3,3 +3,7 @@
 .actions {
   margin: 20rpx 30rpx;
 }
+
+.noresult {
+  margin-top: 160rpx;
+}

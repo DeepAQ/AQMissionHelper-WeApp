@@ -7,3 +7,10 @@
 <view class="mission" hover="true" hover-class="mission-hover" wx:for="{{list}}" data-key="{{index}}" bindtap="onMissionTap">
   <template is="missionItem" data="{{...item}}"/>
 </view>
+
+<view class="noresult center" wx:if="{{list.length == 0}}">
+  <view>
+    <icon type="info" size="120"/>
+  </view>
+  <text>未搜索到结果</text>
+</view>

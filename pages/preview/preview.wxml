@@ -1,0 +1,4 @@
+<view class="wrapper">
+  <button bindtap="flip">更换任务顺序</button>
+  <image src="{{item.icon}}" wx:for="{{missions}}" />
+</view>

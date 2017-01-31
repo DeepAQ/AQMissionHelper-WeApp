@@ -1,0 +1,21 @@
+page {
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAB3SURBVChTdY+xDsAgCERvcOjYoQODgyQOmvT/v68HRWtMekEHzncCUDuKYNUlaIqq3s88RxgJEMHdjbEXPfqh07niHG8+/cRMC/QiZ95IDY42q3EaRZqezcKWd19v52amTbrKAge3bkExFXn8t3Ecjam/HLcv+gAnVQ89vXTuVQAAAABJRU5ErkJggg==') repeat;
+}
+
+.wrapper {
+  margin: 20rpx 40rpx 0 40rpx;
+  line-height: 0;
+}
+
+button {
+  margin-bottom: 40rpx;
+}
+
+image {
+  width: 91rpx;
+  height: 91rpx;
+  border: 2rpx solid #f79e29;
+  margin-right: 12rpx;
+  margin-bottom: 14rpx;
+  border-radius: 50%;
+}
