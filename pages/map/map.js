@@ -9,15 +9,19 @@ Page({
     let markers = []
     for (let key in detailData.portals) {
       const po = detailData.portals[key]
-      const gcjPos = wgstogcj.transform(po.lat, po.lng)
-      markers.push({
-        latitude: gcjPos.lat,
-        longitude: gcjPos.lng,
-        title: po.name
-      })
+      if (po.lat && po.lng) {
+        const gcjPos = wgstogcj.transform(po.lat, po.lng)
+        markers.push({
+          latitude: gcjPos.lat,
+          longitude: gcjPos.lng,
+          title: po.name
+        })
+      }
     }
 
     this.setData({
+      lat: markers[0].latitude,
+      lng: markers[0].longitude,
       markers: markers
     })
   }
