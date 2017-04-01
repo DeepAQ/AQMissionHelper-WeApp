@@ -6,7 +6,13 @@ Page({
     wx.setNavigationBarTitle({
       title: '正在加载',
       success: () => {
-        wx.showNavigationBarLoading();
+        if (wx.showLoading) {
+          wx.showLoading({
+            title: '正在搜索'
+          })
+        } else {
+          wx.showNavigationBarLoading();
+        }
       }
     })
 
@@ -32,7 +38,11 @@ Page({
         wx.setNavigationBarTitle({
           title: '搜索结果',
           success: () => {
-            wx.hideNavigationBarLoading()
+            if (wx.hideLoading) {
+              wx.hideLoading()
+            } else {
+              wx.hideNavigationBarLoading()
+            }
           }
         })
       }, fail)

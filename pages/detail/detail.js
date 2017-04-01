@@ -21,7 +21,13 @@ Page({
     wx.setNavigationBarTitle({
       title: '正在加载',
       success: () => {
-        wx.showNavigationBarLoading();
+        if (wx.showLoading) {
+          wx.showLoading({
+            title: '正在加载'
+          })
+        } else {
+          wx.showNavigationBarLoading();
+        }
       }
     })
 
@@ -38,7 +44,11 @@ Page({
       wx.setNavigationBarTitle({
         title: '任务详情',
         success: () => {
-          wx.hideNavigationBarLoading()
+          if (wx.hideLoading) {
+            wx.hideLoading()
+          } else {
+            wx.hideNavigationBarLoading()
+          }
         }
       })
     }, () => {
