@@ -51,7 +51,7 @@ Page({
 
   onMissionTap: e => {
     wx.navigateTo({
-      url: '../detail/detail?key=' + e.currentTarget.dataset.key
+      url: `../detail/detail?key=${e.currentTarget.dataset.key}`
     })
   },
 
@@ -59,5 +59,12 @@ Page({
     wx.navigateTo({
       url: '../preview/preview'
     })
+  },
+
+  onShareAppMessage: function () {
+    return {
+      title: `${this.data.q} 在 ${this.data.qt} 中的搜索结果`,
+      path: `pages/search/search?q=${this.data.q}&qt=${this.data.qt}`
+    }
   }
 })

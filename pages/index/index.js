@@ -1,4 +1,4 @@
-let searchType = "ingressmm";
+let searchType = 'ingressmm';
 
 Page({
     onRadioChange: e => {
@@ -7,7 +7,14 @@ Page({
 
     onSearch: function (e) {
         wx.navigateTo({
-            url: '../search/search?q=' + e.detail.value + '&qt=' + searchType
+            url: `../search/search?q=${e.detail.value}&qt=${searchType}`
         })
+    },
+
+    onShareAppMessage: function () {
+        return {
+            title: '',
+            path: 'pages/index/index'
+        }
     }
 })

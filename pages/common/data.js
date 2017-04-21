@@ -20,15 +20,14 @@ module.exports = {
             const getNum = name => {
                 name = name.replace(/[\s-]/g, "")
                 const regs = [/[(（\[【{]*(\d+)[/)）\]】}]/i, /(\d+)$/i]
-                for (let i in regs) {
-                    const matches = name.match(regs[i])
+                for (const reg of regs) {
+                    const matches = name.match(reg)
                     if (matches && matches.length >= 2)
                         return Number(matches[1])
                 }
                 return false
             }
-            for (let key in json.mission) {
-                const item = json.mission[key]
+            for (const item of json.mission) {
                 list.push({
                     type: 'ingressmm',
                     id: item.id,
@@ -56,8 +55,7 @@ module.exports = {
                     if (res.statusCode == 200) {
                         let portals = []
                         if (res.data.portal) {
-                            for (let key in res.data.portal) {
-                                const po = res.data.portal[key]
+                            for (const po of res.data.portal) {
                                 if (po[0]) {
                                     portals.push({
                                         hidden: true
@@ -101,13 +99,11 @@ module.exports = {
         parseList: json => {
             let list = []
             try {
-                for (let i in json) {
-                    const json2 = JSON.parse(json[i])
-                    for (let j in json2[4][0]) {
-                        const mission = json2[4][0][j]
+                for (const jsonstr of json) {
+                    const json2 = JSON.parse(jsonstr)
+                    for (const mission of json2[4][0]) {
                         let portals = []
-                        for (let k in mission.data.waypoints) {
-                            const po = mission.data.waypoints[k]
+                        for (const po of mission.data.waypoints) {
                             if (po.data[0] == 0) {
                                 portals.push({
                                     hidden: true
