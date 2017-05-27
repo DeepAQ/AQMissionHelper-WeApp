@@ -1,17 +1,7 @@
 module.exports = {
     ingressmm: {
-        search: function (key, success, fail) {
-            wx.request({
-                url: 'https://aqmh.azurewebsites.net/get_mission.php?find=' + encodeURIComponent(key) + '&findby=0',
-                success: res => {
-                    if (res.statusCode == 200) {
-                        success(this.parseList(res.data))
-                    } else {
-                        fail()
-                    }
-                },
-                fail: fail
-            })
+        search: key => {
+            return `https://aqmh.azurewebsites.net/get_mission.php?find=${encodeURIComponent(key)}&findby=0`
         },
 
         parseList: json => {
@@ -82,18 +72,8 @@ module.exports = {
     },
 
     mosaik: {
-        search: function (key, success, fail) {
-            wx.request({
-                url: 'https://aqmh.azurewebsites.net/get_mission_mosaik.php?find=' + encodeURIComponent(key),
-                success: res => {
-                    if (res.statusCode == 200) {
-                        success(this.parseList(res.data))
-                    } else {
-                        fail()
-                    }
-                },
-                fail: fail
-            })
+        search: key => {
+            return `https://aqmh.azurewebsites.net/get_mission_mosaik.php?find=${encodeURIComponent(key)}`
         },
 
         parseList: json => {
@@ -133,6 +113,20 @@ module.exports = {
             } catch (e) {
                 return false
             }
+        },
+
+        getPortals: (mission, success, fail) => {
+            success(mission.waypoints)
+        }
+    },
+
+    aqmh: {
+        search: function (key) {
+            return key
+        },
+
+        parseList: json => {
+            return json
         },
 
         getPortals: (mission, success, fail) => {
