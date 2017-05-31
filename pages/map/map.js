@@ -29,15 +29,14 @@ Page({
                     title: po.name,
                     label: {
                         content: no,
-                        fontSize: 14,
-                        x: -5,
-                        y: 10
+                        fontSize: 14
                     },
                     callout: {
                         content: `${no}. ${po.name}\n${task_list[po.task]}`,
                         fontSize: 16,
                         borderRadius: 5,
-                        padding: 10
+                        padding: 10,
+                        bgColor: '#ffffff'
                     }
                 })
             }

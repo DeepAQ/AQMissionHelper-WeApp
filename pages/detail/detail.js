@@ -18,47 +18,51 @@ Page({
 
     onLoad: function (options) {
         // 页面初始化 options为页面跳转所带来的参数
-        wx.setNavigationBarTitle({
-            title: '正在加载',
-            success: () => {
-                if (wx.showLoading) {
-                    wx.showLoading({
-                        title: '正在加载'
-                    })
-                } else {
-                    wx.showNavigationBarLoading();
-                }
-            }
-        })
-
         const pages = getCurrentPages()
         const searchData = pages[pages.length - 2].data
         this.setData({
             mission: searchData.list[options.key]
         })
 
-        data[this.data.mission.type].getPortals(this.data.mission, result => {
-            this.setData({
-                portals: result
-            })
-            wx.setNavigationBarTitle({
-                title: '任务详情',
-                success: () => {
-                    if (wx.hideLoading) {
-                        wx.hideLoading()
-                    } else {
-                        wx.hideNavigationBarLoading()
+        const doLoad = () => {
+            data[this.data.mission.type].getPortals(this.data.mission, result => {
+                this.setData({
+                    portals: result
+                })
+                wx.setNavigationBarTitle({
+                    title: '任务详情',
+                    success: () => {
+                        if (wx.hideLoading) {
+                            wx.hideLoading()
+                        } else {
+                            wx.hideNavigationBarLoading()
+                        }
                     }
-                }
+                })
+            }, () => {
+                wx.showModal({
+                    title: '加载失败',
+                    showCancel: false,
+                    success: () => {
+                        wx.navigateBack()
+                    }
+                })
             })
-        }, () => {
-            wx.showModal({
-                title: '加载失败',
-                showCancel: false,
-                success: () => {
-                    wx.navigateBack()
+        }
+
+        wx.setNavigationBarTitle({
+            title: '正在加载',
+            success: () => {
+                if (wx.showLoading) {
+                    wx.showLoading({
+                        title: '正在加载',
+                        success: doLoad
+                    })
+                } else {
+                    wx.showNavigationBarLoading();
+                    doLoad()
                 }
-            })
+            }
         })
     },
 
