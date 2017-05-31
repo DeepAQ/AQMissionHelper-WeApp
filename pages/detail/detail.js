@@ -37,7 +37,7 @@ Page({
             mission: searchData.list[options.key]
         })
 
-        data[searchData.qt].getPortals(searchData.list[options.key], result => {
+        data[this.data.mission.type].getPortals(this.data.mission, result => {
             this.setData({
                 portals: result
             })

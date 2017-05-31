@@ -12,3 +12,14 @@
   </radio-group>
   <input auto-focus placeholder="搜索任务" bindconfirm="onSearch" />
 </view>
+<view class="trending center">
+  <view class="title">
+    <text>大势所趋</text>
+  </view>
+  <view wx:if="{{trending.length == 0}}">
+    <text>马上就来~</text>
+  </view>
+  <view class="links">
+    <text wx:for="{{trending}}" data-key="{{index}}" bindtap="onTrendingTap">{{index}}</text>
+  </view>
+</view>

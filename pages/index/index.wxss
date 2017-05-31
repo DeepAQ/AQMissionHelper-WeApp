@@ -23,3 +23,20 @@
   padding: 10rpx 20rpx;
   border-radius: 10rpx;
 }
+
+.trending .title {
+    color: gray;
+    border-bottom: 1px solid lightgray;
+    margin: 30rpx 40rpx 15rpx 40rpx;
+    padding-bottom: 5rpx;
+}
+
+.trending .links {
+    display: flex;
+    flex-direction: column;
+    color: royalblue;
+}
+
+.trending .links text {
+    margin-bottom: 5px;
+}

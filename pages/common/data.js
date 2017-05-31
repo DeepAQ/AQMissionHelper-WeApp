@@ -1,10 +1,13 @@
 module.exports = {
     ingressmm: {
         search: key => {
-            return `https://aqmh.azurewebsites.net/get_mission.php?find=${encodeURIComponent(key)}&findby=0`
+            return `https://aqmh.azurewebsites.net/get_mission.php?find=${key}&findby=0`
         },
 
         parseList: json => {
+            if (!json.mission) {
+                return []
+            }
             let list = []
             // Smart Sort
             const getNum = name => {
@@ -73,7 +76,7 @@ module.exports = {
 
     mosaik: {
         search: key => {
-            return `https://aqmh.azurewebsites.net/get_mission_mosaik.php?find=${encodeURIComponent(key)}`
+            return `https://aqmh.azurewebsites.net/get_mission_mosaik.php?find=${key}`
         },
 
         parseList: json => {
